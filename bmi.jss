@@ -2,6 +2,10 @@ document.getElementById('bmi-form').addEventListener('submit', function(event) {
     event.preventDefault();
     const weight = parseFloat(document.getElementById('weight').value);
     const height = parseFloat(document.getElementById('height').value);
-    const bmi = weight / (height * height);
-    document.getElementById('bmi-result').innerText = `Your BMI is ${bmi.toFixed(2)}`;
+    if (!isNaN(weight) && !isNaN(height) && height > 0) {
+        const bmi = weight / (height * height);
+        document.getElementById('bmi-result').innerText = `Your BMI is ${bmi.toFixed(2)}`;
+    } else {
+        document.getElementById('bmi-result').innerText = 'Please enter valid numbers for weight and height.';
+    }
 });
